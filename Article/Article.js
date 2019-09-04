@@ -112,3 +112,63 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+function CreateArticle(articleData) {
+  var div1 = document.createElement("DIV");
+  var h2_1 = document.createElement("H2");
+  var p1 = document.createElement("P");
+  var p2 = document.createElement("P");
+  var p3 = document.createElement("P");
+  var p4 = document.createElement("P");
+  var span1 = document.createElement("SPAN");
+ 
+  div1.classList.add("article");
+  div1.appendChild(h2_1);
+  div1.appendChild(p1);
+  div1.appendChild(p2);
+  div1.appendChild(p3);
+  div1.appendChild(p4);
+  div1.appendChild(span1);
+
+  h2_1.textContent = articleData.title;
+
+  p1.classList.add("date");
+  p1.textContent = articleData.date;
+  
+  p2.textContent = articleData.firstParagraph;
+  p3.textContent = articleData.secondParagraph;
+  p4.textContent = articleData.thirdParagraph;
+
+  span1.classList.add("expandButton");
+
+  span1.addEventListener("click", function() {
+    div1.classList.toggle("article-open");
+  });
+
+ span1.textContent = "Click to expand/collapse";
+
+  return div1;
+}
+
+data.forEach(function(articleData) {
+  document.body.append(CreateArticle(articleData));
+});
+
+var myArticle = {
+  title: 'Breaking news!',
+  date: 'Feb 2st, 1794',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+        hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+        Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+        hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+        hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+        hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+        Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+        Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+}
+
+document.body.append(CreateArticle(myArticle));
